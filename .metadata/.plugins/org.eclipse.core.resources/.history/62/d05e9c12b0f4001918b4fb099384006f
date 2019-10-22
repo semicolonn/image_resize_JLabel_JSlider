@@ -1,0 +1,105 @@
+package test;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JSlider;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+
+public class imageResize {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					imageResize window = new imageResize();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public imageResize() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 608, 393);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Click Button Load Image!");
+		lblNewLabel.setBounds(10, 55, 572, 219);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Load Image!");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+																												//Add codes to create image loader here!
+				
+				//lblNewLabel.setIcon(new ImageIcon("images/thumb-1920-513116.png"));
+				lblNewLabel.setText("");
+				ImageIcon dabIcon= new ImageIcon("images/thumb-1920-513116.png");
+				Image dabImage=dabIcon.getImage();
+				Image modImage=dabImage.getScaledInstance(600, 600, java.awt.Image.SCALE_SMOOTH);
+				dabIcon=new ImageIcon(modImage);
+				lblNewLabel.setIcon(dabIcon);
+			}
+		});
+		btnNewButton.setBounds(10, 285, 181, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JSlider slider = new JSlider();
+		slider.addChangeListener(new ChangeListener() {
+			
+			public void stateChanged(ChangeEvent arg0) {
+			
+				lblText.setText(slider.getValue());
+				
+			}
+		});
+		slider.setMajorTickSpacing(5);
+		slider.setMinorTickSpacing(5);
+		slider.setMaximum(80);
+		slider.setMinimum(20);
+		slider.setSnapToTicks(true);
+		slider.setPaintTicks(true);
+		slider.setPaintLabels(true);
+		slider.setBounds(233, 275, 349, 69);
+		frame.getContentPane().add(slider);
+		
+		JLabel lblImageResizeApp = new JLabel("Image Resize App");
+		lblImageResizeApp.setFont(new Font("Segoe UI", Font.BOLD, 17));
+		lblImageResizeApp.setBounds(219, 11, 181, 43);
+		frame.getContentPane().add(lblImageResizeApp);
+		
+		JLabel lblText = new JLabel("text");
+		lblText.setBounds(10, 11, 135, 14);
+		frame.getContentPane().add(lblText);
+	}
+}

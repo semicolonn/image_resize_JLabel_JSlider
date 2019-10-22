@@ -1,0 +1,72 @@
+package test;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import javax.swing.JSlider;
+import java.awt.Font;
+
+public class imageResize {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					imageResize window = new imageResize();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public imageResize() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 608, 393);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Click Button Load Image!");
+		lblNewLabel.setBounds(10, 55, 572, 219);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Load Image!");
+		btnNewButton.setBounds(10, 285, 181, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JSlider slider = new JSlider();
+		slider.setMajorTickSpacing(5);
+		slider.setMinorTickSpacing(5);
+		slider.setMaximum(80);
+		slider.setMinimum(20);
+		slider.setSnapToTicks(true);
+		slider.setPaintTicks(true);
+		slider.setPaintLabels(true);
+		slider.setBounds(233, 275, 349, 69);
+		frame.getContentPane().add(slider);
+		
+		JLabel lblImageResizeApp = new JLabel("Image Resize App");
+		lblImageResizeApp.setFont(new Font("Segoe UI", Font.BOLD, 17));
+		lblImageResizeApp.setBounds(219, 11, 181, 43);
+		frame.getContentPane().add(lblImageResizeApp);
+	}
+}
